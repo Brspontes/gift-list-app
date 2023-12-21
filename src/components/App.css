@@ -1,0 +1,51 @@
+#root {
+  width: 100%;
+}
+
+.body-app {
+  width: 100%;
+}
+
+.body-center-div-all {
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.body-center {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.introduction {
+  padding-top: 1rem;
+  margin: 0 auto;
+  max-width: 75%;
+  text-decoration: dotted;
+  text-align: center;
+  line-height: 2;
+}
+
+.avatar {
+  margin: 0 auto;
+}
+
+.body-center-gifts {
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 8rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.body-center-gifts-title {
+  margin-left: 1rem;
+}
