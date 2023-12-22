@@ -43,9 +43,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .body-center-gifts-title {
-  margin-left: 1rem;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.body-center-card-list {
+  display: flex;
+  justify-content: space-between;
 }

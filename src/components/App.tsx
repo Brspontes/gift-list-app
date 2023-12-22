@@ -1,8 +1,11 @@
-import "./App.css";
-import Avatar from "@mui/material/Avatar";
-import Divider from "@mui/material/Divider";
-import noivos from "../assets/noivos.jpg";
-import { Fade } from "react-awesome-reveal";
+import './App.css'
+import Avatar from '@mui/material/Avatar'
+import Divider from '@mui/material/Divider'
+import noivos from '../assets/noivos.jpg'
+import { Fade } from 'react-awesome-reveal'
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import GiftCard from './Card/Card'
+import Grid from '@mui/material/Grid'
 
 function App() {
   return (
@@ -33,11 +36,37 @@ function App() {
         <div className="body-center-gifts">
           <Fade direction="left">
             <h2 className="body-center-gifts-title">Lista de presentes</h2>
+            <Divider variant="middle" />
+          </Fade>
+          <Fade direction="left">
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+              sx={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                paddingTop: 5,
+              }}
+            >
+              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
+                <GiftCard />
+              </Grid>
+              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
+                <GiftCard />
+              </Grid>
+              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
+                <GiftCard />
+              </Grid>
+              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
+                <GiftCard />
+              </Grid>
+            </Grid>
           </Fade>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
