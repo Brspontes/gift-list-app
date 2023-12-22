@@ -6,8 +6,28 @@ import { Fade } from 'react-awesome-reveal'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import GiftCard from './Card/Card'
 import Grid from '@mui/material/Grid'
+import { useEffect, useState } from 'react'
+import ApiService from '../services/apiService'
+import UnselectedItemsDto from '../models/unselectedItems.dto'
+import {} from 'crypto'
 
 function App() {
+  const [data, setData] = useState<UnselectedItemsDto[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiService = new ApiService()
+      try {
+        const response = await apiService.getUnselectedItems()
+        setData(response)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <div className="body-app">
       <div className="body-center-div-all">
@@ -49,18 +69,19 @@ function App() {
                 paddingTop: 5,
               }}
             >
-              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
-                <GiftCard />
-              </Grid>
-              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
-                <GiftCard />
-              </Grid>
-              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
-                <GiftCard />
-              </Grid>
-              <Grid item columns={{ xs: 4, sm: 8, md: 12 }}>
-                <GiftCard />
-              </Grid>
+              {data &&
+                data.map((unselectedItem, index) => (
+                  <Grid
+                    key={`${index}-${unselectedItem.id}`}
+                    item
+                    columns={{ xs: 4, sm: 8, md: 12 }}
+                  >
+                    <GiftCard
+                      key={`${index}-${unselectedItem.id}-${index}`}
+                      {...unselectedItem}
+                    />
+                  </Grid>
+                ))}
             </Grid>
           </Fade>
         </div>
