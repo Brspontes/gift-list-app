@@ -13,6 +13,11 @@ import UnselectedItemsDto from '../models/unselectedItems.dto'
 function App() {
   const [data, setData] = useState<UnselectedItemsDto[]>([])
 
+  const reloadPage = () => {
+    console.log('RELOAD')
+    window.location.reload()
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       const apiService = new ApiService()
@@ -78,7 +83,8 @@ function App() {
                   >
                     <GiftCard
                       key={`${index}-${unselectedItem.id}-${index}`}
-                      {...unselectedItem}
+                      unselectedItem={unselectedItem}
+                      reloadFunction={reloadPage}
                     />
                   </Grid>
                 ))}
