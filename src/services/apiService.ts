@@ -5,7 +5,8 @@ export default class ApiService {
   private baseUrl: string
 
   constructor() {
-    this.baseUrl = 'https://localhost:44346/api'
+    this.baseUrl =
+      'https://brspontesgiftlistapi20231226100022.azurewebsites.net/api'
   }
 
   async getUnselectedItems(): Promise<UnselectedItemsDto[]> {

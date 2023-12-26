@@ -9,7 +9,6 @@ import Grid from '@mui/material/Grid'
 import { useEffect, useState } from 'react'
 import ApiService from '../services/apiService'
 import UnselectedItemsDto from '../models/unselectedItems.dto'
-import {} from 'crypto'
 
 function App() {
   const [data, setData] = useState<UnselectedItemsDto[]>([])
@@ -57,6 +56,7 @@ function App() {
           <Fade direction="left">
             <h2 className="body-center-gifts-title">Lista de presentes</h2>
             <Divider variant="middle" />
+            <h3>Esses modelos são apenas referência para a compra</h3>
           </Fade>
           <Fade direction="left">
             <Grid
