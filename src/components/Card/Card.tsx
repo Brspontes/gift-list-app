@@ -13,6 +13,7 @@ import {
   Snackbar,
   TextField,
 } from '@mui/material'
+import LoadingButton from '@mui/lab/LoadingButton'
 import { Carousel } from 'react-responsive-carousel'
 import UnselectedItemsDto from '../../models/unselectedItems.dto'
 import { useState } from 'react'
@@ -43,8 +44,10 @@ function GiftCard(cardProps: CardProps) {
   const [errorAlert, setErrorAlert] = useState(false)
   const [apiErrorAlert, setApiErrorAlert] = useState(false)
   const [successAlert, setSuccessAlert] = useState(false)
+  const [loadButton, setLoadButton] = useState(false)
 
   const selectItem = async () => {
+    setLoadButton(true)
     const apiService = new ApiService()
     if (!(name && email && phone)) {
       setErrorAlert(true)
@@ -142,24 +145,41 @@ function GiftCard(cardProps: CardProps) {
               onChange={(event) => setEmail(event.target.value)}
               required
             />
-            <Button
-              sx={{
-                color: 'white',
-                borderRadius: 2,
-                padding: 1.2,
-                mt: 2,
-                width: 100,
-                backgroundColor: 'blue',
-                '&:hover': {
-                  backgroundColor: 'green',
-                },
-              }}
-              className="button-selection"
-              size="medium"
-              onClick={() => selectItem()}
-            >
-              Reservar
-            </Button>
+            {loadButton ? (
+              <LoadingButton
+                loading
+                variant="contained"
+                sx={{
+                  color: 'black',
+                  borderRadius: 2,
+                  padding: 1.2,
+                  mt: 2,
+                  width: 100,
+                }}
+              >
+                Submit
+              </LoadingButton>
+            ) : (
+              <Button
+                sx={{
+                  color: 'white',
+                  borderRadius: 2,
+                  padding: 1.2,
+                  mt: 2,
+                  width: 100,
+                  backgroundColor: 'blue',
+                  '&:hover': {
+                    backgroundColor: 'green',
+                  },
+                }}
+                className="button-selection"
+                size="medium"
+                onClick={() => selectItem()}
+              >
+                Reservar
+              </Button>
+            )}
+
             <Box sx={{ mt: 2 }}>
               {errorAlert && (
                 <Alert
