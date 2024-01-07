@@ -74,7 +74,7 @@ function App() {
                 paddingTop: 5,
               }}
             >
-              {data &&
+              {data && data.length > 0 ? (
                 data.map((unselectedItem, index) => (
                   <Grid
                     key={`${index}-${unselectedItem.id}`}
@@ -87,7 +87,13 @@ function App() {
                       reloadFunction={reloadPage}
                     />
                   </Grid>
-                ))}
+                ))
+              ) : (
+                <img
+                  src="https://www.bataypora.ms.leg.br/imagens/manutencao.png/image"
+                  alt="site em manutenção"
+                />
+              )}
             </Grid>
           </Fade>
         </div>

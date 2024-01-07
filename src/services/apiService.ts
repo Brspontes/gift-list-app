@@ -16,7 +16,7 @@ export default class ApiService {
     const url = `${this.baseUrl}/gift/unselectedItems`
 
     const response = await axios.get<UnselectedItemsDto[]>(url)
-    return response.data
+    return response.data ?? []
   }
 
   async selecTItem(selectItemDto: SelectItemDto): Promise<boolean> {
