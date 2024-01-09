@@ -2,6 +2,7 @@ import './App.css'
 import Avatar from '@mui/material/Avatar'
 import Divider from '@mui/material/Divider'
 import noivos from '../assets/noivos.jpg'
+import spinner from '../assets/Spinner-2.gif'
 import { Fade } from 'react-awesome-reveal'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import GiftCard from './Card/Card'
@@ -12,6 +13,7 @@ import UnselectedItemsDto from '../models/unselectedItems.dto'
 
 function App() {
   const [data, setData] = useState<UnselectedItemsDto[]>([])
+  const [infoPage, setInfoPage] = useState<boolean>(false)
 
   const reloadPage = () => {
     console.log('RELOAD')
@@ -23,7 +25,12 @@ function App() {
       const apiService = new ApiService()
       try {
         const response = await apiService.getUnselectedItems()
+
         setData(response)
+
+        if (response?.length === 0) {
+          setInfoPage(true)
+        }
       } catch (error) {
         console.log(error)
       }
@@ -88,11 +95,13 @@ function App() {
                     />
                   </Grid>
                 ))
-              ) : (
+              ) : infoPage ? (
                 <img
                   src="https://www.bataypora.ms.leg.br/imagens/manutencao.png/image"
                   alt="site em manutenção"
                 />
+              ) : (
+                <img src={spinner} alt="" />
               )}
             </Grid>
           </Fade>
